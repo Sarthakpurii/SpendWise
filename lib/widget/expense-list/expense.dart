@@ -10,7 +10,7 @@ class Expense extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       child: Card(
         child: Row(
           children: [
@@ -20,7 +20,16 @@ class Expense extends StatelessWidget {
                 Text(DateFormat('MMM').format(data.date)),
               ],
             ),
-            const Icon(Icons.apple), // Icons.apple should be a placeholder for an actual icon
+            const SizedBox(width: 5,),
+            const Icon(Icons.apple),
+            const SizedBox(width: 5,), 
+            Column(crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Text(data.title),
+              Text(DateFormat('h:mm a').format(data.date))
+            ],),
+            const Spacer(),
+            Text('\$${data.amount}')
           ],
         ),
       ),

@@ -3,8 +3,7 @@ import 'package:spend/widget/expenses.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Scaffold(
-      body: Expenses(),
+    home: Expenses(),
     ),
-  ));
+  );
 }
