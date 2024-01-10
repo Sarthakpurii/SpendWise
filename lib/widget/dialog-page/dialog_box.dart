@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:spend/models/expense_structure.dart';
-import 'package:spend/widget/expense-list/expense/expense.dart';
-
 
 
 
 
 class DialogPage extends StatefulWidget {
-  DialogPage({super.key, required this.expenseAdder});
-  void Function(ExpenseDetails expense) expenseAdder;
+  const DialogPage({super.key, required this.expenseAdder});
+  final void Function(ExpenseDetails expense) expenseAdder;
 
 
   @override
