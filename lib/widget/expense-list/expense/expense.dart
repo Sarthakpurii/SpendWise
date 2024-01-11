@@ -20,16 +20,19 @@ class Expense extends StatelessWidget {
                 Text(DateFormat('MMM').format(data.date)),
               ],
             ),
-            const SizedBox(width: 5,),
-            const Icon(Icons.apple),
-            const SizedBox(width: 5,), 
+            const SizedBox(width: 10,),
+            Image.asset('assets/icons/${data.category.name.toLowerCase()}.png',
+            height: 30,
+            width: 30,),
+            const SizedBox(width: 10,), 
             Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               Text(data.title),
               Text(DateFormat('h:mm a').format(data.date))
             ],),
             const Spacer(),
-            Text('\$${data.amount}')
+            Text('\$${data.amount}'),
+            const SizedBox(width: 15,)
           ],
         ),
       ),

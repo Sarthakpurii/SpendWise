@@ -20,10 +20,17 @@ final kColorScheme=ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 96, 59, 1
 void main() {
   runApp(MaterialApp(
     theme: ThemeData().copyWith(colorScheme: kColorScheme,
-    appBarTheme: AppBarTheme().copyWith(
+    appBarTheme: const AppBarTheme().copyWith(
       backgroundColor: kColorScheme.onPrimaryContainer,
       foregroundColor: kColorScheme.onPrimary),
-    cardTheme: CardTheme()),
+    cardTheme: const CardTheme().copyWith(
+      color: kColorScheme.primaryContainer
+    ),
+    textTheme: ThemeData().textTheme.copyWith(
+      bodyMedium: ThemeData().textTheme.bodyMedium!.copyWith(
+        fontSize: 18,
+      ) 
+    )),
     home: const Expenses(),
     ),
   );
