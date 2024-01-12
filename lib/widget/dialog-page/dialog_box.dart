@@ -23,7 +23,7 @@ class DialogPage extends StatefulWidget {
 class _DialogPageState extends State<DialogPage> {
   final _titleController = TextEditingController();
   final _priceController = TextEditingController();
-  DateTime? _selectedDate;
+  DateTime? _selectedDate=DateTime.now();
   Category _selectedCategory=Category.Other;
 
   void _dateSelector() async {
@@ -149,7 +149,7 @@ class _DialogPageState extends State<DialogPage> {
                   });
                 }),
                 const Spacer(),
-            ElevatedButton(
+            TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },

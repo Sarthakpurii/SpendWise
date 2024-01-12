@@ -26,6 +26,9 @@ void main() {
     cardTheme: const CardTheme().copyWith(
       color: kColorScheme.primaryContainer
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
+      backgroundColor: kColorScheme.primaryContainer
+    )),
     textTheme: ThemeData().textTheme.copyWith(
       bodyMedium: ThemeData().textTheme.bodyMedium!.copyWith(
         fontSize: 18,
