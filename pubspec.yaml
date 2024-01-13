@@ -67,6 +67,8 @@ flutter:
     - assets/icons/other.png
     - assets/icons/travel.png
     - assets/icons/work.png
+    - assets/icons/empty.png
+    - assets/icons/delete.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
