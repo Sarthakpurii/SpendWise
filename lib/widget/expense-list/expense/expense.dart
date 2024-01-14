@@ -22,6 +22,8 @@ class Expense extends StatelessWidget {
             ),
             const SizedBox(width: 10,),
             Image.asset('assets/icons/${data.category.name.toLowerCase()}.png',
+            color: Theme.of(context).iconTheme.color,
+            colorBlendMode: BlendMode.srcIn,
             height: 30,
             width: 30,),
             const SizedBox(width: 10,), 

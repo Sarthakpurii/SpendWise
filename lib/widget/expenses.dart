@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spend/models/expense_structure.dart';
+import 'package:spend/widget/chart/chart.dart';
 import 'package:spend/widget/dialog-page/dialog_box.dart';
 import 'package:spend/widget/expense-list/expenses_list.dart';
 
@@ -74,7 +75,16 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(context) {
-   Widget mainContent=const Center(child: Text('No expenses'),);
+   Widget mainContent=Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children:[Padding(
+      padding: const EdgeInsets.fromLTRB(26,0,0,0),
+      child: Image.asset('assets/icons/empty.png',scale: 4,color: Theme.of(context).textTheme.bodyMedium!.color,),
+    ),
+              const SizedBox(height: 12,),
+              const Text('No expenses',
+              textAlign: TextAlign.start,)]
+   );
     if (dummydata.isNotEmpty){
     mainContent=ExpensesList(
               dummydata,
@@ -95,7 +105,7 @@ class _ExpensesState extends State<Expenses> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('Chart'),
+            Chart(dummydata),
             Expanded(
                 child: mainContent)
           ],

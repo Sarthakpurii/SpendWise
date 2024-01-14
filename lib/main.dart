@@ -15,10 +15,36 @@ import 'package:spend/widget/expenses.dart';
 //     onSurface: Color(0xFF454545),
 //   );
 
-final kColorScheme=ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 96, 59, 181));
-
+final kColorScheme=ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 96, 59, 181));
+final kDarkColorScheme=ColorScheme.fromSeed(brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 5, 99, 125));
 void main() {
   runApp(MaterialApp(
+    darkTheme: ThemeData.dark().copyWith(
+      colorScheme: kDarkColorScheme,
+      appBarTheme: const AppBarTheme().copyWith(
+      backgroundColor: kDarkColorScheme.onPrimary,
+      foregroundColor: kDarkColorScheme.onPrimaryContainer),
+      cardTheme: const CardTheme().copyWith(
+      color: kDarkColorScheme.primaryContainer),
+      elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
+      backgroundColor: kDarkColorScheme.primaryContainer,
+      foregroundColor: kDarkColorScheme.onPrimaryContainer
+    )),
+    textTheme: ThemeData().textTheme.copyWith(
+      bodyMedium: ThemeData().textTheme.bodyMedium!.copyWith(
+        color: kDarkColorScheme.onPrimaryContainer,
+        fontSize: 18,
+      ) ,
+      
+    )
+    ),
+
+
+
+
+
+
     theme: ThemeData().copyWith(colorScheme: kColorScheme,
     appBarTheme: const AppBarTheme().copyWith(
       backgroundColor: kColorScheme.onPrimaryContainer,

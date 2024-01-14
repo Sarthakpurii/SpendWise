@@ -11,3 +11,22 @@ class ExpenseDetails{
   final DateTime date;
   final Category category;
 }
+
+
+class ExpenseBucket{
+  const ExpenseBucket(this.category,this.expenses);
+
+  final Category category;
+  final List<ExpenseDetails> expenses;
+
+  ExpenseBucket.forCategory(List<ExpenseDetails> elist, this.category) : expenses=elist.where((e)=>e.category==category).toList();
+
+  double get totalExpenses{
+    double sum=0;
+
+    for (final e in expenses){
+      sum+=e.amount;
+    }
+    return sum;
+  }
+}
