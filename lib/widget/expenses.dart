@@ -86,10 +86,17 @@ class _ExpensesState extends State<Expenses> {
               textAlign: TextAlign.start,)]
    );
     if (dummydata.isNotEmpty){
-    mainContent=ExpensesList(
+    mainContent=Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Chart(dummydata),
+            Expanded(
+                child: ExpensesList(
               dummydata,
               expenseDeleter: expenseDeleter,
-            );
+            ))
+          ],
+        );
   }
 
 
@@ -102,14 +109,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: SizedBox(
         width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Chart(dummydata),
-            Expanded(
-                child: mainContent)
-          ],
-        ),
+        child: mainContent,
       ),
     );
   }

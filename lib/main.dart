@@ -36,12 +36,14 @@ void main() {
         color: kDarkColorScheme.onPrimaryContainer,
         fontSize: 18,
       ) ,
-      
-    )
     ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+      textStyle: ThemeData().textTheme.titleMedium!.copyWith(
+          color: kDarkColorScheme.onPrimaryContainer
+      )
+    )
 
-
-
+    ),
 
 
 

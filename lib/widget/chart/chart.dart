@@ -10,10 +10,10 @@ class Chart extends StatelessWidget{
   
   List<ExpenseBucket> get buckets{
     List<ExpenseBucket> bucketList=[];
+    bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Food));
+    bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Travel));
     bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Leisure));
     bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Work));
-    bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Travel));
-    bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Food));
     bucketList.add(ExpenseBucket.forCategory(expensesData, Category.Other));
 
     return bucketList;
@@ -36,7 +36,7 @@ class Chart extends StatelessWidget{
       width: double.infinity,
       margin: const EdgeInsets.fromLTRB(12,12,12,7),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-      gradient: LinearGradient(colors: [Theme.of(context).colorScheme.primaryContainer,Theme.of(context).colorScheme.primaryContainer.withOpacity(0.6)],
+      gradient: LinearGradient(colors: [Theme.of(context).colorScheme.primaryContainer,Theme.of(context).colorScheme.primaryContainer.withOpacity(0.5)],
       begin: Alignment.bottomCenter,
       end: Alignment.topCenter,)
       ,),
@@ -49,19 +49,21 @@ class Chart extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [for (final bucket in buckets)
                 ChartBar(bucket.totalExpenses/maxAmount)])),
-            // SizedBox(height: 0,),
+            const SizedBox(height: 13,),
 
 
 
 
-            Expanded(child: Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [for ( Category c in Category.values) Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 23,vertical: 0),
-                child: Image.asset('assets/icons/${c.name.toLowerCase()}.png',scale: 20,),
+                child: Image.asset('assets/icons/${c.name.toLowerCase()}.png',
+                scale: 20,
+                color: Theme.of(context).textTheme.bodyMedium!.color),
               )],
-            )),
-            SizedBox(height: 5,)
+            ),
+            const SizedBox(height: 5,)
           ],
         ),
       ),
