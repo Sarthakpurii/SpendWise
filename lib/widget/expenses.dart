@@ -17,9 +17,6 @@ class _ExpensesState extends State<Expenses> {
  
 
 
-
-
-
   void expenseAdder(ExpenseDetails e) {
     setState(() {
       dummydata.add(e);
@@ -45,6 +42,7 @@ class _ExpensesState extends State<Expenses> {
 
   void _DialogPage() {
     showModalBottomSheet(
+      useSafeArea: true,
       //  barrierColor: Colors.white.withOpacity(1),
         isScrollControlled: true,
         context: context,
@@ -75,7 +73,11 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(context) {
-   Widget mainContent=Column(
+
+  final width=MediaQuery.of(context).size.width;
+  print(width);
+
+  Widget mainContent=Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children:[Padding(
       padding: const EdgeInsets.fromLTRB(26,0,0,0),
@@ -86,10 +88,20 @@ class _ExpensesState extends State<Expenses> {
               textAlign: TextAlign.start,)]
    );
     if (dummydata.isNotEmpty){
-    mainContent=Column(
+    mainContent=width<500?Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Chart(dummydata),
+            Expanded(
+                child: ExpensesList(
+              dummydata,
+              expenseDeleter: expenseDeleter,
+            ))
+          ],
+        ):Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(child: Chart(dummydata)),
             Expanded(
                 child: ExpensesList(
               dummydata,

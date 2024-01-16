@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget{
-  ChartBar(this.amount,{super.key});
+  const ChartBar(this.amount,{super.key});
 
-  double amount;
+  final double amount;
 
   @override
   Widget build(context){
@@ -18,7 +18,7 @@ class ChartBar extends StatelessWidget{
           heightFactor: amount,
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
               shape: BoxShape.rectangle,
               color: Theme.of(context).colorScheme.onPrimaryContainer
               ),

@@ -4,9 +4,9 @@ import 'package:spend/models/expense_structure.dart';
 import 'package:spend/widget/chart/chart_bar.dart';
 
 class Chart extends StatelessWidget{
-  Chart(this.expensesData,{super.key});
+  const Chart(this.expensesData,{super.key});
 
-  List<ExpenseDetails> expensesData;
+  final List<ExpenseDetails> expensesData;
   
   List<ExpenseBucket> get buckets{
     List<ExpenseBucket> bucketList=[];
@@ -31,8 +31,9 @@ class Chart extends StatelessWidget{
   @override
   Widget build(context){
     final double maxAmount=getmaxAmount;
+    final width= MediaQuery.of(context).size.width;
     return Container(
-      height: 180,
+      height: width<600?180:double.infinity,
       width: double.infinity,
       margin: const EdgeInsets.fromLTRB(12,12,12,7),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
@@ -41,7 +42,7 @@ class Chart extends StatelessWidget{
       end: Alignment.topCenter,)
       ,),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 6,horizontal: 4),
+        padding: const EdgeInsets.symmetric(vertical: 6,horizontal: 4),
         child: Column(
           children: [
             Expanded(

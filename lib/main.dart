@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:spend/widget/expenses.dart';
 
 // const kColorScheme=ColorScheme(
@@ -18,7 +19,13 @@ import 'package:spend/widget/expenses.dart';
 final kColorScheme=ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 96, 59, 181));
 final kDarkColorScheme=ColorScheme.fromSeed(brightness: Brightness.dark,
   seedColor: const Color.fromARGB(255, 5, 99, 125));
+
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp
+  // ]).then((fn){
+
   runApp(MaterialApp(
     darkTheme: ThemeData.dark().copyWith(
       colorScheme: kDarkColorScheme,
@@ -35,13 +42,15 @@ void main() {
       bodyMedium: ThemeData().textTheme.bodyMedium!.copyWith(
         color: kDarkColorScheme.onPrimaryContainer,
         fontSize: 18,
-      ) ,
-    ),
-    dropdownMenuTheme: DropdownMenuThemeData(
-      textStyle: ThemeData().textTheme.titleMedium!.copyWith(
-          color: kDarkColorScheme.onPrimaryContainer
-      )
-    )
+      ) ,)
+      
+    // dropdownMenuTheme: DropdownMenuThemeData(
+    //   textStyle: TextStyle(
+    //       color: kDarkColorScheme.onPrimaryContainer
+
+    //   ),
+    //   inputDecorationTheme: InputDecorationTheme()
+    // )
 
     ),
 
@@ -65,4 +74,5 @@ void main() {
     home: const Expenses(),
     ),
   );
+  
 }

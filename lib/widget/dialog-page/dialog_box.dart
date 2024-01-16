@@ -87,77 +87,89 @@ class _DialogPageState extends State<DialogPage> {
 
   @override
   Widget build(context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16,42,16,16),
-      child: Column(children: [
-        TextField(
-          maxLength: 25,
-          decoration: const InputDecoration(label: Text('Title')),
-          controller: _titleController,
-        ),
+    final keyboardsize=MediaQuery.of(context).viewInsets.bottom;
 
-
-
-
-        Row(
-          children: [
-            Expanded(
-              child: TextField(
-                keyboardType: TextInputType.number,
-                controller: _priceController,
-                decoration: const InputDecoration(label: Text('Amount'),
-                prefix: Text('\$ ')),
-              ),
+    return SizedBox(
+      height: double.infinity,
+      
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16,16,16,keyboardsize+26),
+          child: Column(children: [
+            TextField(
+              maxLength: 25,
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimaryContainer),
+              decoration: const InputDecoration(label: Text('Title')),
+              controller: _titleController,
             ),
-            const SizedBox(
-              width: 15,
-            ),
-            Expanded(
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        
+        
+        
+        
+            Row(
               children: [
-                Text((_selectedDate == null)
-                    ? 'Selected Date'
-                    : DateFormat('dd-MM-yyyy').format(_selectedDate!)),
-                IconButton(
-                    onPressed: _dateSelector,
-                    icon: const Icon(Icons.calendar_month))
+                Expanded(
+                  child: TextField(
+                    style: TextStyle(color: Theme.of(context).colorScheme.onPrimaryContainer),
+                    keyboardType: TextInputType.number,
+                    controller: _priceController,
+                    decoration: const InputDecoration(label: Text('Amount'),
+                    prefix: Text('\$ ')),
+                  ),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(DateFormat('dd-MM-yyyy').format(_selectedDate!),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 16),),
+                    const SizedBox(width: 10,),
+                    IconButton(
+                        onPressed: _dateSelector,
+                        icon: const Icon(Icons.calendar_month))
+                  ],
+                ))
               ],
-            ))
-          ],
+            ),
+        
+        
+        
+        
+             const SizedBox(height: 20,),
+        
+        
+            Row(
+              children: [
+                DropdownButton(
+                  style: TextStyle(color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                  fontSize: 18),
+                    value: _selectedCategory,
+                    items: Category.values
+                        .map((e) =>DropdownMenuItem(
+                              value: e,
+                              child: Text(e.name))).toList(),
+                    onChanged: (value) {
+                      if (value==null) return;
+                      setState(() {
+                        _selectedCategory=value;
+                      });
+                    }),
+                    const Spacer(),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Cancel')),
+                ElevatedButton(onPressed: _submitData, child: const Text('Submit'))
+              ],
+            )
+          ]),
         ),
-
-
-
-
-         const SizedBox(height: 20,),
-
-
-        Row(
-          children: [
-            DropdownButton(
-                value: _selectedCategory,
-                items: Category.values
-                    .map((e) =>DropdownMenuItem(
-                          value: e,
-                          child: Text(e.name))).toList(),
-                onChanged: (value) {
-                  if (value==null) return;
-                  setState(() {
-                    _selectedCategory=value;
-                  });
-                }),
-                const Spacer(),
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Cancel')),
-            ElevatedButton(onPressed: _submitData, child: const Text('Submit'))
-          ],
-        )
-      ]),
+      ),
     );
   }
 }
